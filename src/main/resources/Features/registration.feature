@@ -1,3 +1,4 @@
+@regression
 Feature: registration user should be able to sign up with new accounts
 
     Scenario:user could sign up with valid data

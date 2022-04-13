@@ -1,5 +1,5 @@
+@regression
 Feature: registration user should be able to sign up with new accounts
-
 
     Scenario:user could sign up with valid data
       And user navigate to home page
@@ -8,8 +8,6 @@ Feature: registration user should be able to sign up with new accounts
       And user fills Your Password Details with valid data
       And user press on register button
       Then user register successfully
-
-
 
     Scenario:
 
