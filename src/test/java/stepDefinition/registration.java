@@ -13,6 +13,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import java.util.concurrent.TimeUnit;
+
 public class registration {
     WebDriver driver;
     @Given("user open chrome driver")
@@ -20,6 +22,7 @@ public class registration {
         WebDriverManager.chromedriver().setup();
          driver=new ChromeDriver();
          driver.manage().window().maximize();
+         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
     @And("user navigate to home page")
@@ -37,26 +40,25 @@ public class registration {
     }
     @When("user fills Your Personal Details with valid data")
     public void personal_info(){
-        driver.findElement(By.id("FirstName")).sendKeys("automation");
-        driver.findElement(By.id("LastName")).sendKeys("tester");
-        driver.findElement(By.id("Email")).sendKeys("test@example.com");
+        driver.findElement(By.id("FirstName")).sendKeys("automation1");
+        driver.findElement(By.id("LastName")).sendKeys("tester2");
+        driver.findElement(By.id("Email")).sendKeys("test2@example.com");
     }
     @And("user fills Your Password Details with valid data")
     public void password(){
         driver.findElement(By.id("Password")).sendKeys("password");
-        driver.findElement(By.id("ConfirmPassword ")).sendKeys("password");
+        driver.findElement(By.id("ConfirmPassword")).sendKeys("password");
     }
     @And("user press on register button")
     public void press_register_button(){
         driver.findElement(By.id("register-button")).click();
     }
     @Then("user register successfully")
-    public void register_successfully(){
+    public void register_successfully()  {
         //driver.findElement(By.className("result")).isDisplayed();
 
         SoftAssert softAssert=new SoftAssert();
-        softAssert.assertTrue(driver.findElement(
-                By.partialLinkText("Your registration completed")).isDisplayed());
+        softAssert.assertTrue(driver.findElement(By.className("result")).isDisplayed());
         softAssert.assertAll();
 
 
