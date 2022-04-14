@@ -1,5 +1,7 @@
 package stepDefinition;
 
+import Pages.HomePage;
+import Pages.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -7,15 +9,16 @@ import org.openqa.selenium.By;
 import org.testng.asserts.SoftAssert;
 
 public class Login {
+    HomePage homePage=new HomePage(Hooks.driver);
+    LoginPage loginPage=new LoginPage(Hooks.driver);
     @And("user press login link")
     public void click_login_link(){
-        Hooks.driver.findElement(By.className("ico-login")).click();
+        homePage.click_login_link();
     }
-    @When("user enter valid username and password")
+    @When("user enter valid Email and password")
     public void enter_valid_data(){
-        Hooks.driver.findElement(By.id("Email")).sendKeys("test3@example.com");
-        Hooks.driver.findElement(By.id("Password")).sendKeys("password");
-
+        loginPage.enter_valid_Email_Password(stepDefinition.registration.email,
+                stepDefinition.registration.password);
     }
     @And("user click on login button")
     public void click_button(){

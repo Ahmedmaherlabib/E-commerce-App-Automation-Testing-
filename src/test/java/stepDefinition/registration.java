@@ -1,50 +1,42 @@
 package stepDefinition;
+import Pages.HomePage;
+import Pages.RegistrationPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.asserts.SoftAssert;
-import java.util.concurrent.TimeUnit;
 
 public class registration {
+    RegistrationPage registrationPage=new RegistrationPage(Hooks.driver);;
+    HomePage homePage=new HomePage(Hooks.driver);
+    public static String email="test9@example.com";
+    String fierstName="username";
+    String lastNmae="test";
+    public static String password="password";
 
-    @And("user navigate to home page")
+    @Given("user navigate to home page")
     public void navigate_home() {
-        WebDriverManager.chromedriver().setup();
-            Hooks.driver.navigate().to("https://demo.nopcommerce.com/");
+        homePage.navigateToHomePage();
     }
     @And("user press registration link")
-    public void click_regis_link(){
-        Hooks.driver.findElement(By.className("ico-register")).click();
+    public void clickRegis_link(){
+        homePage.click_regis_link();
     }
-
-    @When("user fills Your Personal Details with valid data")
+    @When("user fills Personal Details with valid data and password")
     public void personal_info(){
-        Hooks.driver.findElement(By.id("FirstName")).sendKeys("automation1");
-        Hooks.driver.findElement(By.id("LastName")).sendKeys("tester2");
-        Hooks.driver.findElement(By.id("Email")).sendKeys("test3@example.com");
-    }
-    @And("user fills Your Password Details with valid data")
-    public void password(){
-        Hooks.driver.findElement(By.id("Password")).sendKeys("password");
-        Hooks.driver.findElement(By.id("ConfirmPassword")).sendKeys("password");
+
+    registrationPage.enter_valid_date(email,password,fierstName,lastNmae);
+
     }
     @And("user press on register button")
     public void press_register_button(){
-        Hooks.driver.findElement(By.id("register-button")).click();
+        registrationPage.click_button();
     }
     @Then("user register successfully")
     public void register_successfully()  {
-        //driver.findElement(By.className("result")).isDisplayed();
-
         SoftAssert softAssert=new SoftAssert();
-        softAssert.assertTrue(  Hooks.driver.findElement(By.className("result")).isDisplayed());
+        softAssert.assertTrue(registrationPage.successfullyMessage());
         softAssert.assertAll();
-
-
     }
     }
