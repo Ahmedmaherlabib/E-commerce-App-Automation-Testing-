@@ -10,6 +10,12 @@ public class HomePage {
     private By clickLogLink=By.className("ico-login");
     private By clickSearchField=By.id("small-searchterms");
     private By clickSearchButton=By.xpath("//*[@id=\"small-search-box-form\"]/button");
+    private By ClickCurrencyList=By.cssSelector("div[class=\"currency-selector\"] select");
+    private By ClickCurrencyEuro=By.xpath("//*[@id=\"customerCurrency\"]/option[2]");
+    private By ClickCurrencyDollar=By.xpath("//*[@id=\"customerCurrency\"]/option[1]");
+
+    private By itemsPrices=By.cssSelector("div[class=\"prices\"] span");
+
     //public static String itemName="laptop";
 
     public HomePage(WebDriver driver) {
@@ -32,6 +38,21 @@ public class HomePage {
     }
     public void clickSearchButton(){
         driver.findElement(clickSearchButton).click();
+    }
+    public void ClickCurrencyList(){
+        driver.findElement(ClickCurrencyList).click();
+    }
+    public void changeCurrencyTo_Euro(){
+        driver.findElement(ClickCurrencyEuro).click();
+    }
+    public void changeCurrencyTo_Dollar(){
+        driver.findElement(ClickCurrencyDollar).click();
+    }
+    public String itemsInEuro(){
+       return driver.findElement(itemsPrices).getText();
+    }
+    public String itemsInDollar(){
+        return driver.findElement(itemsPrices).getText();
     }
 
 }
