@@ -1,14 +1,11 @@
 package Pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import stepDefinition.Search;
-
 import java.util.ArrayList;
-
 public class SearchPage {
     WebDriver driver;
+    String itemName="book";
     public SearchPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -22,8 +19,8 @@ public class SearchPage {
                     ("h2[class=\"product-title\"] a")).get(i).getText());
             itemsName.add(driver.findElements(By.cssSelector
                     ("h2[class=\"product-title\"] a")).get(i).getText());
-            /*Assert.assertTrue(driver.findElements(By.cssSelector
-                    ("h2[class=\"product-title\"] a")).get(i).getText().contains("book"));*/
+            Assert.assertTrue(driver.findElements(By.cssSelector
+      ("h2[class=\"product-title\"] a")).get(i).getText().toLowerCase().contains(itemName));
 
         }
         System.out.println(itemsName);
