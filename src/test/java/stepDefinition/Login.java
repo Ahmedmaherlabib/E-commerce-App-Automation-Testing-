@@ -1,5 +1,4 @@
 package stepDefinition;
-
 import Pages.HomePage;
 import Pages.LoginPage;
 import io.cucumber.java.en.And;
@@ -22,8 +21,7 @@ public class Login {
     }
     @And("user click on login button")
     public void click_button(){
-        Hooks.driver.findElement(By.cssSelector("button[class=\"button-1 login-button\"]")).click();
-
+         loginPage.click_login_button();
     }
 
     @Then("user could login successfully and go to home page")
@@ -31,6 +29,7 @@ public class Login {
         SoftAssert softAssert=new SoftAssert();
 
         softAssert.assertEquals(Hooks.driver.findElement
-                (By.xpath("/html/body/div[6]/div[3]/div/div/div/div/div[2]/div[1]/h2")).getText(),"Welcome to our store");
+                (By.xpath("/html/body/div[6]/div[3]/div/div/div/div/div[2]/div[1]/h2"))
+                .getText(),"Welcome to our store");
     }
 }
