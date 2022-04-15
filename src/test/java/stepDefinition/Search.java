@@ -7,13 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Search {
-    //public static String itemName;
     SearchPage searchPage=new SearchPage(Hooks.driver);
     HomePage homePage=new HomePage(Hooks.driver);
-    @Given("user navigate to home page1")
-    public void open(){
-        homePage.navigateToHomePage();
-    }
     @When("user press on search field")
     public void clickSearchField(){
         homePage.click_Search_field();
