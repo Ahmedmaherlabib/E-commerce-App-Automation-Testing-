@@ -9,6 +9,7 @@ public class ApparelShoesPage {
     private By RedCheckBox=By.id("attribute-option-15");
     private By BlueCheckBox=By.id("attribute-option-16");
     private By itemColor=By.cssSelector("h2[class=\"product-title\"] a");
+    private By tagAwesome=By.cssSelector("div[class=\"tags\"] a[href=\"/awesome\"]");
     public ApparelShoesPage(WebDriver driver) {
         this.driver = driver;}
     public void select_Gray_Color() throws InterruptedException {
@@ -30,14 +31,15 @@ public class ApparelShoesPage {
         Thread.sleep(2000);
         softAssert.assertAll();
     }
-
+public void selectTag(){
+        driver.findElement(tagAwesome).click();
+}
     public void itemsColor() throws InterruptedException {
         SoftAssert softAssert=new SoftAssert();
         softAssert.assertEquals(true,driver.findElement(itemColor).getText().contains("Running "));
         System.out.println(driver.findElement(itemColor).getText());
         Thread.sleep(2000);
         softAssert.assertAll();
-
     }
 }
 
