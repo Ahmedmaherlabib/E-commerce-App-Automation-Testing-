@@ -31,5 +31,6 @@ public class Login {
         softAssert.assertEquals(Hooks.driver.findElement
                 (By.xpath("/html/body/div[6]/div[3]/div/div/div/div/div[2]/div[1]/h2"))
                 .getText(),"Welcome to our store");
+        softAssert.assertAll();
     }
 }

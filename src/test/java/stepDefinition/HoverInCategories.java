@@ -21,6 +21,7 @@ homePage.hover_in_categories();
         SoftAssert softAssert=new SoftAssert();
         softAssert.assertEquals(true,homePage.getUrl().contains("shoes"));
         System.out.println(homePage.getUrl());
+        softAssert.assertAll();
     }
 }
 

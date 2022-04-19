@@ -26,5 +26,6 @@ public class forgetPassword {
         String acutalResult="Email with instructions has been sent to you.";
         SoftAssert softAssert=new SoftAssert();
         softAssert.assertEquals(true,recoverPage.SuccessfullyMessage().contains(acutalResult));
+        softAssert.assertAll();
     }
 }

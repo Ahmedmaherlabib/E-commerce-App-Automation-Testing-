@@ -36,5 +36,6 @@ public class ChangeCurrency {
         softAssert.assertEquals(true,homePage.itemsInDollar().contains("$"));
         Thread.sleep(3000);
         System.out.println(homePage.itemsInEuro());
+        softAssert.assertAll();
     }
 }

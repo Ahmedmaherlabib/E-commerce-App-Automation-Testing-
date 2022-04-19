@@ -3,13 +3,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import stepDefinition.Hooks;
 
-import java.time.Duration;
+import java.util.Random;
 
 public class HomePage {
     WebDriver driver;
-
     private By clickRegisLink=By.className("ico-register");
     private By clickLogLink=By.className("ico-login");
     private By clickSearchField=By.id("small-searchterms");
@@ -18,6 +16,18 @@ public class HomePage {
     private By ClickCurrencyEuro=By.xpath("//*[@id=\"customerCurrency\"]/option[2]");
     private By ClickCurrencyDollar=By.xpath("//*[@id=\"customerCurrency\"]/option[1]");
     private By itemsPrices=By.cssSelector("div[class=\"prices\"] span");
+    private By wishListButton3 =By.xpath("(//button[@class=\"button-2 add-to-wishlist-button\"])[3]");
+    private By wishListButton2 =By.xpath("(//button[@class=\"button-2 add-to-wishlist-button\"])[2]");
+    private By AddShoppingCartButton3 =By.xpath("(//button[@class=\"button-2 product-box-add-to" +
+            "-cart-button\"])[3]");
+    private By itemNum3=By.xpath("/html/body/div[6]/div[3]/div/div/div/div/div[4]/div[2]/div[3]/div/div[2]/h2/a");
+    private By itemNum2=By.xpath("/html/body/div[6]/div[3]/div/div/div/div/div[4]/div[2]/div[2]/div/div[2]/h2/a");
+    private By AddShoppingCartButton2 =By.xpath("(//button[@class=\"button-2 product-box-add-to" +
+            "-cart-button\"])[2]");
+
+    //private By Categoies=By.xpath("By.xpath(\"/html/body/div[6]/div[2]/ul[1]\")");
+    //private By subCategories=By.xpath("//div[@class=\"header-menu\"]//child::ul[@class=\"top-menu " +
+            //"notmobile\"]//li//ul//li//a");
     private WebElement computerCategory;
     private WebElement ElectronicCategory;
     private WebElement ApparelCategory;
@@ -29,11 +39,16 @@ public class HomePage {
     private WebElement CamerasSubcategory;
     private WebElement NoteBooksSubcategory;
     private WebElement ApparelShoes;
+    public static  String item1Number;
+    public static String item2Number;
 
     //public static String itemName="laptop";
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+    }
+    public String getItemNum3Name() {
+        return driver.findElement(itemNum3).getText();
     }
     public void click_regis_link(){
      driver.findElement(clickRegisLink).click();
@@ -93,15 +108,30 @@ public class HomePage {
         actions.moveToElement(ApparelCategory).perform();
         Thread.sleep(1000);
     }
-public void click_on_subcategory() throws InterruptedException {
+    public void click_on_subcategory() throws InterruptedException {
         ApparelCategory=driver.findElement(By.cssSelector("a[href=\"/shoes\"]"));
   ApparelCategory.click();
     Thread.sleep(2000);
-    //driver.getCurrentUrl();
+
+}
+    public void ClickWishlistButton() throws InterruptedException {
+        driver.findElement(wishListButton3).click();
+        Thread.sleep(2000);
+        driver.findElement(wishListButton2).click();
+        Thread.sleep(2000);
+
 }
     public String getUrl() throws InterruptedException {
         Thread.sleep(2000);
         return driver.getCurrentUrl();
 
+}
+public void ClickAddShoppingButtonButton() throws InterruptedException {
+        driver.findElement(AddShoppingCartButton3).click();
+        Thread.sleep(3000);
+        item1Number=driver.findElement(itemNum3).getText();
+        driver.findElement(AddShoppingCartButton2).click();
+        item2Number=driver.findElement(itemNum2).getText();
+        Thread.sleep(2000);
 }
 }
