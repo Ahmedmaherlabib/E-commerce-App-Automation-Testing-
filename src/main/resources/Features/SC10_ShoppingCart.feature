@@ -9,5 +9,5 @@ Feature:
 
     Given user could add items to shoppingCart
     When user go to Shopping cart
-    Then user found the choosen items in shoppingCart
+    Then user found the chosen items in shoppingCart
 

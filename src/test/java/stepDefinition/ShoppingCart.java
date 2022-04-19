@@ -22,7 +22,7 @@ itemPage.click_on_ShoppingCart_Button();
     public void go_to_shoppingCart() throws InterruptedException {
         itemPage.clickShoppingCartLink();
     }
-    @Then("user found the choosen items in shoppingCart")
+    @Then("user found the chosen items in shoppingCart")
     public void count_choosen_items() throws InterruptedException {
         SoftAssert softAssert=new SoftAssert();
         System.out.println(HomePage.item1Number);
