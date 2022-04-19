@@ -3,6 +3,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import stepDefinition.Hooks;
 
 import java.util.Random;
 
@@ -25,9 +26,6 @@ public class HomePage {
     private By AddShoppingCartButton2 =By.xpath("(//button[@class=\"button-2 product-box-add-to" +
             "-cart-button\"])[2]");
 
-    //private By Categoies=By.xpath("By.xpath(\"/html/body/div[6]/div[2]/ul[1]\")");
-    //private By subCategories=By.xpath("//div[@class=\"header-menu\"]//child::ul[@class=\"top-menu " +
-            //"notmobile\"]//li//ul//li//a");
     private WebElement computerCategory;
     private WebElement ElectronicCategory;
     private WebElement ApparelCategory;
@@ -39,10 +37,10 @@ public class HomePage {
     private WebElement CamerasSubcategory;
     private WebElement NoteBooksSubcategory;
     private WebElement ApparelShoes;
+    private WebElement cellPhones;
     public static  String item1Number;
     public static String item2Number;
 
-    //public static String itemName="laptop";
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -126,7 +124,7 @@ public class HomePage {
         return driver.getCurrentUrl();
 
 }
-public void ClickAddShoppingButtonButton() throws InterruptedException {
+    public void ClickAddShoppingButtonButton() throws InterruptedException {
         driver.findElement(AddShoppingCartButton3).click();
         Thread.sleep(3000);
         item1Number=driver.findElement(itemNum3).getText();
@@ -134,4 +132,13 @@ public void ClickAddShoppingButtonButton() throws InterruptedException {
         item2Number=driver.findElement(itemNum2).getText();
         Thread.sleep(2000);
 }
+    public void compareList_button() throws InterruptedException {
+        Actions actions=new Actions(driver);
+        ElectronicCategory=driver.findElement(By.xpath("/html/body/div[6]/div[2]/ul[1]/li[2]/a"));
+        actions.moveToElement(ElectronicCategory).perform();
+        cellPhones=driver.findElement(By.cssSelector("a[href=\"/cell-phones\"]"));
+        cellPhones.click();
+        Thread.sleep(3000);
+    }
+
 }
