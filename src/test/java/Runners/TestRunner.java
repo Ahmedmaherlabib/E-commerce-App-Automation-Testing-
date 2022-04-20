@@ -8,6 +8,13 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src\\main\\resources\\Features",
         glue = "stepDefinition",
+        monochrome = true,
+        plugin = {"pretty",
+                "html:target/cucumber.html",
+                "json:target/cucumber.json",
+                "junit:target/cukes.xml",
+                "rerun:target/rerun.txt"},
+        dryRun = false,
         tags ="@regression"
 )
 

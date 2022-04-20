@@ -1,3 +1,4 @@
+@regression
 Feature:
 Background:
   #Scenario: user login with valid username and password

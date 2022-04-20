@@ -1,4 +1,4 @@
-
+@regression
 Feature:
   Scenario: user can change his/her password successfully
     Given user navigate to home page
