@@ -10,7 +10,7 @@ import org.testng.asserts.SoftAssert;
 public class registration {
     RegistrationPage registrationPage=new RegistrationPage(Hooks.driver);;
     HomePage homePage=new HomePage(Hooks.driver);
-    public static String email="test15@example.com";
+    public static String email="test65@example.com";
     String fierstName="username";
     String lastNmae="test";
     public static String password="password";
